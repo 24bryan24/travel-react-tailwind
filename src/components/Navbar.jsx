@@ -10,6 +10,7 @@ import {
   FaPinterest,
   FaYoutube,
 } from "react-icons/fa";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -27,10 +28,34 @@ const Navbar = () => {
       </div>
       <ul className="hidden md:flex">
         <li>Home</li>
-        <li>Destinations</li>
-        <li>Travel</li>
-        <li>Views</li>
-        <li>Book</li>
+        <li><Link 
+              to="destinations"
+              style={{ cursor: "pointer" }}
+              spy={true}
+              smooth={true}
+              offset={60}
+              duration={500}>Destinations</Link></li>
+        <li><Link 
+              to="travel"
+              style={{ cursor: "pointer" }}
+              spy={true}
+              smooth={true}
+              offset={20}
+              duration={500}>Travel</Link></li>
+        <li><Link 
+              to="views"
+              style={{ cursor: "pointer" }}
+              spy={true}
+              smooth={true}
+              offset={43}
+              duration={500}>Views</Link></li>
+        <li><Link 
+              to="book"
+              style={{ cursor: "pointer" }}
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}>Book</Link></li>
       </ul>
       <div className="hidden md:flex">
         <Search className="mr-2" size={20} />
