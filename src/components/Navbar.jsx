@@ -22,12 +22,12 @@ const Navbar = () => {
   console.log(sidebar);
 
   return (
-    <div className="flex w-full justify-between items-center h-20 px-4 absolute text-white z-10">
+    <div className="flex w-full justify-between items-center h-20 px-6 absolute text-white z-10">
       <div>
-        <h1 className={sidebar && "text-black"}>BEACHES.</h1>
+        <h1 className={sidebar ? "hidden" : "text-white"}>BEACHES.</h1>
       </div>
       <ul className="hidden md:flex">
-        <li>Home</li>
+        <li >Home</li>
         <li><Link 
               to="destinations"
               style={{ cursor: "pointer" }}
@@ -58,47 +58,79 @@ const Navbar = () => {
               duration={500}>Book</Link></li>
       </ul>
       <div className="hidden md:flex">
-        <Search className="mr-2" size={20} />
-        <Profile size={20} />
+        <Search className="mr-6 cursor-pointer" size={20} />
+        <Profile className="cursor-pointer" size={20} />
       </div>
 
       {/* Hamburger */}
 
       <div onClick={handleSidebar} className="md:hidden">
-        {sidebar ? (
-          <Close className="text-black cursor-pointer" size={20} />
-        ) : (
-          <Menu className="cursor-pointer" size={20} />
-        )}
+          {sidebar ? <></> : <Menu className="cursor-pointer" size={20} />}
       </div>
 
       {/* Mobile Menu Dropdown */}
 
       <div
-        onClick={handleSidebar}
         className={
           sidebar
-            ? "md:left-[-100%] absolute text-black left-0 top-0 w-full bg-gray-200/90 px-4 py-7 flex flex-col"
+            ? "md:left-[-100%] absolute text-black left-0 top-0 w-full h-screen bg-gray-200/90 px-4 py-7 flex flex-col"
             : "absolute left-[-100%]"
         }
       >
         <ul>
-          <div className="flex">{/* <h1>BEACHES.</h1> */}</div>
-          <li className="pt-14 border-b">Home</li>
-          <li className="border-b">Destinations</li>
-          <li className="border-b">Travel</li>
-          <li className="border-b">Views</li>
+          <div className="flex justify-between">
+            <h1 onClick={handleSidebar} className="cursor-pointer ml-2 -mt-1.5">BEACHES.</h1>
+            <Close onClick={handleSidebar} className="text-black cursor-pointer mr-2 mt-1" size={20} />
+            </div>
+          <li className="pt-14 border-b cursor-pointer" onClick={handleSidebar}>Home</li>
+          <li className="border-b">
+          <Link 
+              to="destinations"
+              style={{ cursor: "pointer" }}
+              spy={true}
+              smooth={true}
+              offset={60}
+              duration={500}>Destinations</Link>
+          </li>
+          <li className="border-b">
+          <Link 
+              to="travel"
+              style={{ cursor: "pointer" }}
+              spy={true}
+              smooth={true}
+              offset={20}
+              duration={500}>Travel</Link>
+          </li>
+          <li className="border-b">
+          <Link 
+              to="views"
+              style={{ cursor: "pointer" }}
+              spy={true}
+              smooth={true}
+              offset={43}
+              duration={500}>Views</Link>
+          </li>
           <li className="border-b">Book</li>
           <div className="flex flex-col">
             <button className="my-4">Search</button>
             <button>Account</button>
           </div>
           <div className="flex justify-between my-6 mx-2">
+          <a href="https://www.facebook.com/">
             <FaFacebook className="icon" />
+        </a>
+        <a href="https://www.twitter.com/">
             <FaTwitter className="icon" />
+        </a>
+        <a href="https://www.instagram.com/">
             <FaInstagram className="icon" />
+        </a>
+        <a href="https://www.pinterest.com/">
             <FaPinterest className="icon" />
+        </a>
+        <a href="https://www.youtube.com/">
             <FaYoutube className="icon" />
+        </a>
           </div>
         </ul>
       </div>
